@@ -1,0 +1,36 @@
+<template>
+    <div class="slds-show_inline-block slds-form-element slds-size_6-of-12">
+        <div class="slds-form-element__control">
+            <div class="slds-combobox_container">
+                <div class={openDropDownClass} aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <lightning-input autocomplete="off" class="slds-show_inline-block slds-input slds-combobox__input slds-has-focus slds-combobox__input-value" 
+                             type="text" label="Search" placeholder="Search.." value={searchString} id="combobox-id-21"
+                             aria-autocomplete="list" aria-controls="listbox-id-11" role="textbox" onchange={searchHandler} onfocus={searchFocusHandler} onblur={searchBlurHandler}
+                             >
+                        </lightning-input>
+                    </div>
+                    <div id="listbox-id-11" class="slds-dropdown slds-dropdown_length-5" style="width: 100%" role="listbox">
+                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                            <template for:each={records} for:item="result">
+                                <li role="presentation" key={result.queryString} class="slds-listbox__item" data-id={result.queryString}
+                                        data-value={result.queryString} onclick={optionClickHandler}>
+                                    <div id={result.queryString}
+                                        class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_medium"
+                                        role="option">
+                                           <span class="slds-media__figure slds-listbox__option-icon"></span>
+                                        <span class="slds-media__body">
+                                            <span  title="All Products">
+                                                <span>{result.queryString}</span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+</template>
